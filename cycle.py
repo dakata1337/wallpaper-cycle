@@ -5,13 +5,17 @@ import time
 import os
 
 __relfile__=os.path.basename(__file__)
+IMAGE_FORMATS = ("jpeg", "jpg", "png", "webp")
 
 def change_wallpaper(wp_path: str):
     subprocess.run(["/usr/bin/feh", "--bg-scale", wp_path])
 
+def file_filter(file: str) -> bool:
+    return file.endswith(IMAGE_FORMATS)
+
 def start(path: str, timeout: int):
     while True:
-        files = os.listdir(path)
+        files = list(filter(file_filter, os.listdir(path)))
         random.shuffle(files)
         for _ in range(len(files)):
             file = files.pop(random.randrange(len(files)))
