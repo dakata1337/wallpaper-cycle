@@ -17,4 +17,5 @@ exec your_wm
 -h    shows this help message
 -p    the directory in which the wallpapers are located
 -t    the time between each change (in seconds)
+-r    shuffle all wallpapers randomly
 ```
